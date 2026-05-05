@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "question": "Explain what data engineering is to a non-technical founder.",
+    "expected_behavior": "Simple, business-focused explanation without heavy jargon."
+  },
+  {
+    "id": 2,
+    "question": "Summarize why LLM evaluation matters in production AI systems.",
+    "expected_behavior": "Mention reliability, regressions, safety, cost, and quality."
+  },
+  {
+    "id": 3,
+    "question": "Write a concise answer explaining RAG to a hiring manager.",
+    "expected_behavior": "Clear definition of retrieval augmented generation and practical value."
+  }
+]
