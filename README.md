@@ -1,75 +1,164 @@
-# LLM Eval Pipeline: Prompt Comparison + LLM-as-Judge
+```markdown
+# 🚀 LLM Evaluation Pipeline (Prompt Comparison + LLM-as-Judge)
 
-A lightweight evaluation pipeline that compares multiple prompts across a test dataset and scores responses using an LLM-as-judge.
+A lightweight, production-style evaluation pipeline to compare multiple prompts and automatically score LLM responses using an LLM-as-judge.
 
-## What this project shows
+Built to simulate how real AI teams evaluate prompt quality before deploying LLM features.
 
-- Prompt evaluation
-- LLM-as-judge scoring
-- Prompt comparison
-- Structured outputs
-- Production-style logging
-- Reusable AI engineering workflow
+---
 
-## Architecture
+## 🔥 Key Features
 
-```text
-eval_dataset.json
-      |
-      v
-run_eval.py
-      |
-      +--> generate answer from Prompt A
-      +--> generate answer from Prompt B
-      |
-      v
-judge.py scores each answer
-      |
-      v
-results/eval_results.csv
+- Prompt versioning (multiple prompt strategies)
+- Automated evaluation using LLM-as-judge
+- Structured scoring (1–5 scale with reasoning)
+- CSV-based benchmarking output
+- Model flexibility (Groq-based LLMs)
+- Clean, modular pipeline design
+
+---
+
+## 🧠 Why This Matters
+
+In real-world AI systems:
+- Prompt quality directly impacts product performance  
+- Manual evaluation doesn’t scale  
+- Automated evaluation pipelines are critical for:
+  - reliability  
+  - regression detection  
+  - continuous improvement  
+
+This project replicates that workflow.
+
+---
+
+## ⚙️ Architecture
+
 ```
 
-## Setup
+eval_dataset.json
+↓
+run_eval.py
+↓
+Prompt Variants → LLM Response Generation
+↓
+LLM-as-Judge Scoring (judge.py)
+↓
+results/eval_results.csv
+
+```
+
+---
+
+## 📊 Sample Results
+
+| Prompt Version        | Avg Judge Score |
+|----------------------|----------------|
+| prompt_v3_structured | 4.67           |
+| prompt_v1_basic      | 3.33           |
+| prompt_v2_role_based | 3.33           |
+
+**Best performing prompt:** `prompt_v3_structured`
+
+---
+
+## 📁 Project Structure
+
+```
+
+llm_eval_pipeline_project/
+│
+├── data/
+│   └── eval_dataset.json
+│
+├── src/
+│   ├── prompts.py
+│   ├── llm_client.py
+│   ├── judge.py
+│   ├── run_eval.py
+│   └── analyze_results.py
+│
+├── results/
+│   └── eval_results.csv
+│
+├── requirements.txt
+├── README.md
+└── .env.example
+
+````
+
+---
+
+## 🛠️ Setup
 
 ```bash
 python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
+venv\Scripts\activate
 pip install -r requirements.txt
+````
+
+Create a `.env` file in the root directory:
+
+```
+GROQ_API_KEY=your_api_key_here
 ```
 
-Create `.env`:
+---
 
-```bash
-OPENAI_API_KEY=your_api_key_here
-```
-
-## Run
+## ▶️ Run Evaluation
 
 ```bash
 python src/run_eval.py
 ```
 
-## Output
+Output:
 
-The pipeline creates:
-
-```text
+```
 results/eval_results.csv
 ```
 
-Each row includes:
+---
 
-- input question
-- expected behavior
-- prompt version
-- model response
-- judge score
-- judge reasoning
+## 📈 What This Project Demonstrates
 
-## Resume Bullet
+* LLM evaluation workflows used in production
+* Prompt engineering experimentation
+* Automated scoring systems
+* Model abstraction (provider flexibility)
+* Data-driven prompt optimization
 
-Built a lightweight LLM evaluation pipeline using Python, prompt versioning, and LLM-as-judge scoring to compare prompt quality, automate response evaluation, and generate structured CSV reports for model iteration.
+---
 
-## LinkedIn/GitHub Positioning
+## 💡 Future Improvements
 
-This project demonstrates how AI teams evaluate prompt quality before shipping LLM features to production.
+* Multi-model comparison (Groq vs OpenAI vs Claude)
+* Latency + cost tracking
+* Streamlit dashboard for visualization
+* Prompt optimization loop
+* A/B testing framework
+
+---
+
+## 🧾 Resume Bullet
+
+Built an LLM evaluation pipeline with prompt comparison and automated LLM-as-judge scoring, enabling structured benchmarking and improving prompt performance analysis.
+
+---
+
+## 🎯 Positioning
+
+This project demonstrates real-world AI engineering practices used in:
+
+* LLM product development
+* prompt optimization systems
+* evaluation pipelines for production AI
+
+---
+
+## 📬 Author
+
+Shradhanjali Pradhan
+AI/ML & Data Engineering
+
+```
+```
