@@ -1,14 +1,15 @@
 import os
-from openai import OpenAI
+from groq import Groq
 from dotenv import load_dotenv
 
 load_dotenv()
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 
-def call_llm(prompt: str, model: str = "gpt-4o-mini") -> str:
-    """Generate a response from the LLM."""
+def call_llm(prompt: str, model: str = "llama-3.3-70b-versatile") -> str:
+    """Generate a response from Groq LLM."""
+    
     response = client.chat.completions.create(
         model=model,
         messages=[

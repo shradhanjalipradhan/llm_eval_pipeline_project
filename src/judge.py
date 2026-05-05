@@ -40,9 +40,17 @@ def judge_answer(question: str, expected_behavior: str, answer: str) -> dict:
     raw_output = call_llm(prompt)
 
     try:
-        return json.loads(raw_output)
+        cleaned = raw_output.strip()
+
+        if cleaned.startswith("```json"):
+            cleaned = cleaned.replace("```json", "").replace("```", "").strip()
+        elif cleaned.startswith("```"):
+            cleaned = cleaned.replace("```", "").strip()
+
+        return json.loads(cleaned)
+
     except json.JSONDecodeError:
         return {
-            "score": 0,
+            "score": 1,
             "reasoning": f"Judge returned invalid JSON: {raw_output}"
         }
